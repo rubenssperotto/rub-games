@@ -46,7 +46,7 @@ const Menu = ({ username }: MenuProps) => {
         </S.IconWrapper>
         {!username && (
           <MediaMatch greaterThan="medium">
-            <Link href="/sign-in" passHref>
+            <Link href="/sign-in" passHref >
               <a>
                 <Button as="a">Sign in</Button>
               </a>

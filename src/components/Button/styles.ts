@@ -44,17 +44,17 @@ const wrapperModifiers = {
 
 export const Wrapper = styled.button<WrapperProps>`
   ${({ theme, size, fullWidth, hasIcon, minimal }) => css`
+    text-decoration: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, #04A3DE 0%, #3346FE 50%);
+    background: linear-gradient(180deg, #04a3de 0%, #3346fe 50%);
     color: ${theme.colors.white};
     font-family: ${theme.font.family};
     border: 0;
     cursor: pointer;
     border-radius: ${theme.border.radius};
     padding: ${theme.spacings.xxsmall};
-    text-decoration: none;
     &:hover {
       background: ${minimal
         ? 'none'
