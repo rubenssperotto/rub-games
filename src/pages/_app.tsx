@@ -14,10 +14,7 @@ function App({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" href="/img/icon-control.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#06092B" />
-        <meta
-          name="description"
-          content="Loja de Jogos Rub Games"
-        />
+        <meta name="description" content="Loja de Jogos Rub Games" />
       </Head>
       <GlobalStyles />
       <Component {...pageProps} />

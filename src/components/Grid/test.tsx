@@ -1,4 +1,3 @@
-
 import { Grid } from '.'
 import { renderWithTheme } from '../../../public/utils/tests/helpers'
 

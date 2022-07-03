@@ -19,7 +19,7 @@ const Footer = () => (
         </Heading>
 
         <a href="mailto:rub@rubgames.com">rub@rubgames.com</a>
-        <a href='tel:+55 61 123456789'>+55 61 123456789</a>
+        <a href="tel:+55 61 123456789">+55 61 123456789</a>
       </S.Column>
 
       <S.Column>
@@ -33,32 +33,16 @@ const Footer = () => (
         </Heading>
 
         <nav aria-labelledby="social media">
-          <a
-            href="#"
-            target="_blank"
-            rel="noopenner, noreferrer"
-          >
+          <a href="#" target="_blank" rel="noopenner, noreferrer">
             Instagram
           </a>
-          <a
-            href="#"
-            target="_blank"
-            rel="noopenner, noreferrer"
-          >
+          <a href="#" target="_blank" rel="noopenner, noreferrer">
             Twitter
           </a>
-          <a
-            href="#"
-            target="_blank"
-            rel="noopenner, noreferrer"
-          >
+          <a href="#" target="_blank" rel="noopenner, noreferrer">
             Youtube
           </a>
-          <a
-            href="#"
-            target="_blank"
-            rel="noopenner, noreferrer"
-          >
+          <a href="#" target="_blank" rel="noopenner, noreferrer">
             Facebook
           </a>
         </nav>

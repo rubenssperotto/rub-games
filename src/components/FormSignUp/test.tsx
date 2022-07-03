@@ -1,6 +1,5 @@
 import { screen } from '@testing-library/react'
 
-
 import FormSignUp from '.'
 import { renderWithTheme } from '../../../public/utils/tests/helpers'
 

@@ -4,9 +4,9 @@ import media from 'styled-media-query'
 import * as RibbonStyles from 'components/Ribbon/styles'
 
 export const Wrapper = styled.main`
-    position: relative;
+  position: relative;
 
-    ${media.lessThan('large')`
+  ${media.lessThan('large')`
     ${RibbonStyles.Wrapper} {
       right: 0;
       &::before {
@@ -15,15 +15,15 @@ export const Wrapper = styled.main`
     }
   `}
 
-    box-shadow: 0 0.4rem 0.5rem 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.4rem 0.5rem 0 rgba(0, 0, 0, 0.2);
 `
 
 type ImageProps = {
-    src: string
+  src: string
 }
 
 export const Image = styled.div<ImageProps>`
-    ${({ theme, src }) => css`
+  ${({ theme, src }) => css`
     width: 100%;
     height: 23rem;
     background-color: ${theme.colors.lightGray};
@@ -34,7 +34,7 @@ export const Image = styled.div<ImageProps>`
     ${media.greaterThan('medium')`
         height: 58rem;
     `}
-    `}
+  `}
 `
 
 export const Caption = styled.div`

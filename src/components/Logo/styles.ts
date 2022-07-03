@@ -1,19 +1,19 @@
 import styled, { css } from 'styled-components'
-import { LogoProps  } from '.'
+import { LogoProps } from '.'
 
 import media from 'styled-media-query'
 
 const wrapperModifiers = {
-    normal: () => css `
+  normal: () => css`
     width: 16rem;
     heigth: 4.7rem;
-    `,
-    large: () => css `
+  `,
+  large: () => css`
     width: 22rem;
     heigth: 6.2 rem;
-    `,
+  `,
 
-    hideOnMobile: () => css`
+  hideOnMobile: () => css`
     ${media.lessThan('medium')`
       width: 7.8rem;
       height: 6.5rem;

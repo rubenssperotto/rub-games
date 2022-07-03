@@ -1,8 +1,8 @@
 import { TextContentProps } from '.'
 
 const TextContentMock: TextContentProps = {
-    title: 'Description',
-    content: `<h1>Heading</h1>
+  title: 'Description',
+  content: `<h1>Heading</h1>
   <h2>Heading</h2>
   <h3>Heading</h3>
   <h4>Heading</h4>
@@ -42,6 +42,6 @@ const TextContentMock: TextContentProps = {
     quam illum. Fugiat consectetur assumenda in, vitae nemo, eaque quia
     numquam ad perspiciatis doloribus error eveniet quo officia?
   </p>`
-  }
+}
 
-  export default TextContentMock
+export default TextContentMock

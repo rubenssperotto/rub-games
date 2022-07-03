@@ -1,8 +1,9 @@
 import theme from 'styles/theme'
 
-//inferência de tipos
+// inferência de tipos
 type Theme = typeof theme
 
 declare module 'styled-components' {
-    export interface DefaultTheme extends Theme {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  export interface DefaultTheme extends Theme {}
 }

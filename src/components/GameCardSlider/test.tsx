@@ -1,7 +1,6 @@
 import 'match-media-mock'
 import { screen } from '@testing-library/react'
 
-
 import GameCardSlider from '.'
 import { renderWithTheme } from '../../../public/utils/tests/helpers'
 

@@ -4,9 +4,9 @@ import media from 'styled-media-query'
 import * as HeadingStyles from 'components/Heading/styles'
 
 export const Wrapper = styled.footer`
-    ${HeadingStyles.Wrapper} {
-        text-transform: uppercase;
-    }
+  ${HeadingStyles.Wrapper} {
+    text-transform: uppercase;
+  }
 `
 
 export const Content = styled.div`
