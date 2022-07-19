@@ -1,5 +1,5 @@
 {
-  "name": "react-avancado-boilerplate",
+  "name": "rub-games-boilerplate",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -15,7 +15,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "postinstall": "husky install",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "lint-staged": {
     "src/**/*": [
@@ -24,9 +25,13 @@
     ]
   },
   "dependencies": {
+    "@apollo/client": "^3.6.9",
     "@styled-icons/boxicons-regular": "^10.38.0",
     "@styled-icons/boxicons-solid": "^10.38.0",
     "@styled-icons/fa-brands": "^10.38.0",
+    "apollo": "^2.34.0",
+    "apollo-client": "^2.6.10",
+    "graphql": "^16.5.0",
     "next": "12.2.2",
     "next-pwa": "^5.3.1",
     "polished": "^4.2.2",
@@ -38,6 +43,15 @@
     "styled-media-query": "^2.1.2"
   },
   "devDependencies": {
+    "@apollo/rover": "^0.7.0",
+    "@graphql-codegen/cli": "2.8.1",
+    "@graphql-codegen/introspection": "2.2.0",
+    "@graphql-codegen/typed-document-node": "^2.3.1",
+    "@graphql-codegen/typescript": "2.7.1",
+    "@graphql-codegen/typescript-operations": "^2.5.1",
+    "@graphql-codegen/typescript-react-apollo": "3.3.1",
+    "@graphql-codegen/typescript-react-query": "^3.6.1",
+    "@graphql-codegen/typescript-resolvers": "2.7.1",
     "@storybook/addon-essentials": "6.4.17",
     "@storybook/builder-webpack5": "^6.4.17",
     "@storybook/manager-webpack5": "^6.5.9",
