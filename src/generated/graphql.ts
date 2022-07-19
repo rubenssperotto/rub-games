@@ -1319,6 +1319,7 @@ export type QueryGameBySlugQuery = {
         short_description: string
         description: string
         price: number
+        rating: number
         release_date: any
         gallery?: {
           __typename?: 'UploadFileRelationResponseCollection'
