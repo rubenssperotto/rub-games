@@ -28,5 +28,5 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ]
+, "src/graphql/generated/graphql"  ]
 }

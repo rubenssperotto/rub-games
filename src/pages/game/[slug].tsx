@@ -4,7 +4,7 @@ import Game, { GameTemplateProps } from 'pages/templates/Game'
 import galleryMock from 'components/Gallery/mock'
 import gamesMock from 'components/GameCardSlider/mock'
 import highlightMock from 'components/Highlight/mock'
-import { QueryGamesQuery, QueryGamesQueryVariables, QueryGameBySlugQuery, QueryGameBySlugQueryVariables } from 'generated/graphql'
+import { QueryGamesQuery, QueryGamesQueryVariables, QueryGameBySlugQuery, QueryGameBySlugQueryVariables } from 'graphql/generated/graphql'
 import { QUERY_GAMES, QUERY_GAMES_BY_SLUG, } from 'graphql/queries/games'
 import { GetStaticProps } from 'next'
 
