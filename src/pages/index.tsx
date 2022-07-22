@@ -17,7 +17,7 @@ export default function Index(props: HomeTemplateProps) {
 export async function getStaticProps() {
   const apolloClient = initializeApollo()
 
-  const { data: { banners, newGames, upcomingGames, freeGames } } = await apolloClient.query<QueryHomeQuery>({
+  const { data: { banners, newGames, upcomingGames, freeGames, sections } } = await apolloClient.query<QueryHomeQuery>({
     query: QUERY_HOME
   })
 
@@ -36,6 +36,7 @@ export async function getStaticProps() {
           ribbonSize: banner.attributes?.ribbon?.size
         })
       })),
+      newGamesTitle: sections?.data?.attributes?.newGames?.title,
       newGames: newGames?.data.map((game) => ({
         tiitle: game.attributes?.name,
         slug: game.attributes?.slug,
@@ -43,8 +44,16 @@ export async function getStaticProps() {
         img: `http://localhost:1337${game.attributes?.cover.data?.attributes?.url}`,
         price: game.attributes?.price
       })),
+      mostPopularGamesTitle: sections?.data?.attributes?.popularGames?.title,
       mostPopularHighlight: highlightMock,
-      mostPopularGames: gamesMock,
+      mostPopularGames: sections!.data!.attributes!.popularGames!.games!.data.map((game) => ({
+        title: game.attributes?.name,
+        slug: game.attributes?.slug,
+        developer: game.attributes?.developers?.data[0].attributes?.name,
+        img: `http://localhost:1337${game.attributes?.cover.data?.attributes?.url}`,
+        price: game.attributes?.price
+      })),
+      upcomingGamesTitle: sections?.data?.attributes?.upcomingGames?.title,
       upcomingGames: upcomingGames?.data.map((game) => ({
         title: game.attributes?.name,
         slug: game.attributes?.slug,
@@ -52,6 +61,7 @@ export async function getStaticProps() {
         img: `http://localhost:1337${game.attributes?.cover.data?.attributes?.url}`,
         price: game.attributes?.price
       })),
+      freeGamesTitle: sections?.data?.attributes?.freeGames?.title,
       upcomingHighlight: highlightMock,
       freeGames: freeGames?.data.map((game) => ({
         title: game.attributes?.name,
