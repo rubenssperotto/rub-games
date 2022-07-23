@@ -1,5 +1,4 @@
 import Home, { HomeTemplateProps } from './templates/Home'
-import highlightMock from 'components/Highlight/mock'
 import { initializeApollo } from 'utils/apollo'
 import { QueryHomeQuery } from 'graphql/generated/graphql'
 import { QUERY_HOME } from 'graphql/queries/home'
