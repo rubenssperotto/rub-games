@@ -183,17 +183,6 @@ export type ComponentPageHighlight = {
   title: Scalars['String']
 }
 
-export type ComponentPageHighlightFiltersInput = {
-  alignment?: InputMaybe<StringFilterInput>
-  and?: InputMaybe<Array<InputMaybe<ComponentPageHighlightFiltersInput>>>
-  buttonLabel?: InputMaybe<StringFilterInput>
-  buttonLink?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentPageHighlightFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentPageHighlightFiltersInput>>>
-  subtitle?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-}
-
 export type ComponentPageHighlightInput = {
   alignment?: InputMaybe<Enum_Componentpagehighlight_Alignment>
   background?: InputMaybe<Scalars['ID']>
@@ -208,7 +197,7 @@ export type ComponentPageHighlightInput = {
 export type ComponentPagePopularGames = {
   __typename?: 'ComponentPagePopularGames'
   games?: Maybe<GameRelationResponseCollection>
-  highlight?: Maybe<Array<Maybe<ComponentPageHighlight>>>
+  highlight?: Maybe<ComponentPageHighlight>
   id: Scalars['ID']
   title: Scalars['String']
 }
@@ -220,15 +209,9 @@ export type ComponentPagePopularGamesGamesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
-export type ComponentPagePopularGamesHighlightArgs = {
-  filters?: InputMaybe<ComponentPageHighlightFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
 export type ComponentPagePopularGamesInput = {
   games?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  highlight?: InputMaybe<Array<InputMaybe<ComponentPageHighlightInput>>>
+  highlight?: InputMaybe<ComponentPageHighlightInput>
   id?: InputMaybe<Scalars['ID']>
   title?: InputMaybe<Scalars['String']>
 }
@@ -1843,7 +1826,7 @@ export type QueryHomeQuery = {
         popularGames?: {
           __typename?: 'ComponentPagePopularGames'
           title: string
-          highlight?: Array<{
+          highlight?: {
             __typename?: 'ComponentPageHighlight'
             title: string
             subtitle: string
@@ -1864,7 +1847,7 @@ export type QueryHomeQuery = {
                 attributes?: { __typename?: 'UploadFile'; url: string } | null
               } | null
             } | null
-          } | null> | null
+          } | null
           games?: {
             __typename?: 'GameRelationResponseCollection'
             data: Array<{

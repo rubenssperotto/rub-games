@@ -18,83 +18,82 @@ export const QUERY_HOME = gql`
     }
 
     upcomingGames: games(
-    filters: { release_date: { gt: "2022-07-22" } }
-    sort: "release_date:asc"
-    pagination: { limit: 8 }
-  ) {
-    ...GameFragment
-  }
+      filters: { release_date: { gt: "2022-07-22" } }
+      sort: "release_date:asc"
+      pagination: { limit: 8 }
+    ) {
+      ...GameFragment
+    }
 
-  freeGames: games(
-    filters: { price: { eq: 0 } }
-    sort: "release_date:desc"
-    pagination: { limit: 8 }
-  ) {
-    ...GameFragment
-  }
+    freeGames: games(
+      filters: { price: { eq: 0 } }
+      sort: "release_date:desc"
+      pagination: { limit: 8 }
+    ) {
+      ...GameFragment
+    }
 
-  sections: home {
-    data {
-      attributes {
-        newGames {
-          title
-          highlight {
-            ...HighlightFragment
+    sections: home {
+      data {
+        attributes {
+          newGames {
+            title
+            highlight {
+              ...HighlightFragment
+            }
           }
-        }
-        
-        popularGames {
-          title
-          highlight {
-            ...HighlightFragment
-          }
-          games(pagination: {limit: 8}) {
-            data {
-              attributes {
-                name
-                slug
-                cover {
-                  data {
-                    attributes {
-                      url
+
+          popularGames {
+            title
+            highlight {
+              ...HighlightFragment
+            }
+            games(pagination: { limit: 8 }) {
+              data {
+                attributes {
+                  name
+                  slug
+                  cover {
+                    data {
+                      attributes {
+                        url
+                      }
                     }
                   }
                 }
-              }
-              attributes {
-                developers {
-                  data {
-                    attributes {
-                      name
+                attributes {
+                  developers {
+                    data {
+                      attributes {
+                        name
+                      }
                     }
                   }
                 }
-              }
-              attributes {
-                price
+                attributes {
+                  price
+                }
               }
             }
           }
-        }
-        
-        upcomingGames {
-          title
-          highlight {
-            ...HighlightFragment
+
+          upcomingGames {
+            title
+            highlight {
+              ...HighlightFragment
+            }
           }
-        }
-        
-        freeGames {
-          title
-          highlight {
-            ...HighlightFragment
+
+          freeGames {
+            title
+            highlight {
+              ...HighlightFragment
+            }
           }
         }
       }
     }
   }
-  }
-
 
   ${BannerFragment}
   ${GameFragment}
