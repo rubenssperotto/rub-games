@@ -1680,7 +1680,9 @@ export type QueryGameBySlugQuery = {
   } | null
 }
 
-export type QueryHomeQueryVariables = Exact<{ [key: string]: never }>
+export type QueryHomeQueryVariables = Exact<{
+  date: Scalars['Date']
+}>
 
 export type QueryHomeQuery = {
   __typename?: 'Query'
@@ -2186,19 +2188,19 @@ export type QueryGameBySlugQueryResult = Apollo.QueryResult<
   QueryGameBySlugQueryVariables
 >
 export const QueryHomeDocument = gql`
-  query QueryHome {
+  query QueryHome($date: Date!) {
     banners {
       ...BannerFragment
     }
     newGames: games(
-      filters: { release_date: { lte: "2022-07-22" } }
+      filters: { release_date: { lte: $date } }
       sort: "release_date:desc"
       pagination: { limit: 8 }
     ) {
       ...GameFragment
     }
     upcomingGames: games(
-      filters: { release_date: { gt: "2022-07-22" } }
+      filters: { release_date: { gt: $date } }
       sort: "release_date:asc"
       pagination: { limit: 8 }
     ) {
@@ -2286,11 +2288,12 @@ export const QueryHomeDocument = gql`
  * @example
  * const { data, loading, error } = useQueryHomeQuery({
  *   variables: {
+ *      date: // value for 'date'
  *   },
  * });
  */
 export function useQueryHomeQuery(
-  baseOptions?: Apollo.QueryHookOptions<QueryHomeQuery, QueryHomeQueryVariables>
+  baseOptions: Apollo.QueryHookOptions<QueryHomeQuery, QueryHomeQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<QueryHomeQuery, QueryHomeQueryVariables>(
