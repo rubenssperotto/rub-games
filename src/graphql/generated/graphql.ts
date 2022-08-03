@@ -1583,6 +1583,7 @@ export type HighlightFragmentFragment = { __typename?: 'ComponentPageHighlight',
 
 export type QueryGamesQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
+  start?: InputMaybe<Scalars['Int']>;
 }>;
 
 
@@ -1695,12 +1696,32 @@ export const HighlightFragmentFragmentDoc = gql`
 }
     `;
 export const QueryGamesDocument = gql`
-    query QueryGames($limit: Int) {
-  games(pagination: {limit: $limit}) {
-    ...GameFragment
+    query QueryGames($limit: Int, $start: Int) {
+  games(pagination: {limit: $limit, start: $start}) {
+    data {
+      attributes {
+        name
+        slug
+        cover {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        developers {
+          data {
+            attributes {
+              name
+            }
+          }
+        }
+        price
+      }
+    }
   }
 }
-    ${GameFragmentFragmentDoc}`;
+    `;
 
 /**
  * __useQueryGamesQuery__
@@ -1715,6 +1736,7 @@ export const QueryGamesDocument = gql`
  * const { data, loading, error } = useQueryGamesQuery({
  *   variables: {
  *      limit: // value for 'limit'
+ *      start: // value for 'start'
  *   },
  * });
  */
