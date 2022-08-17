@@ -10,7 +10,7 @@ export const parseQueryStringToWhere = ({
   queryString,
   filterItems
 }: ParseArgs) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const obj: any = {}
 
   Object.keys(queryString)
@@ -20,8 +20,8 @@ export const parseQueryStringToWhere = ({
       const isCheckbox = item?.type === 'checkbox'
 
       obj[key] = !isCheckbox
-        ? queryString[key]
-        : { name_contains: queryString[key] }
+        ? {lte: parseInt(queryString[key])}
+        : { name:{in: queryString[key] }} 
     })
 
   return obj
@@ -31,7 +31,7 @@ export const parseQueryStringToFilter = ({
   queryString,
   filterItems
 }: ParseArgs) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const obj: any = {}
 
   Object.keys(queryString).forEach((key) => {

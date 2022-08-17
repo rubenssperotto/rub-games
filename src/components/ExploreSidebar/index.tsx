@@ -1,4 +1,4 @@
-git import { Close } from '@styled-icons/material-outlined/Close'
+import { Close } from '@styled-icons/material-outlined/Close'
 import xor from 'lodash.xor'
 import { useEffect, useState } from 'react'
 import { ParsedUrlQueryInput } from 'querystring'

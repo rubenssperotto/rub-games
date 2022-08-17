@@ -10,17 +10,20 @@ import apolloCache from 'utils/apolloCache'
 
 
 
+const useRouter = jest.spyOn(require('next/router'), 'useRouter')
+const push = jest.fn()
+
+useRouter.mockImplementation(() => ({
+  push,
+  query: '',
+  asPath: '',
+  route: '/'
+}))
+
 jest.mock('templates/Base', () => ({
   __esModule: true,
   default: function Mock({ children }: { children: React.ReactNode }) {
     return <div data-testid="Mock Base">{children}</div>
-  }
-}))
-
-jest.mock('components/ExploreSidebar', () => ({
-  __esModule: true,
-  default: function Mock({ children }: { children: React.ReactNode }) {
-    return <div data-testid="Mock ExploreSidebar">{children}</div>
   }
 }))
 
@@ -47,7 +50,7 @@ describe('<Games />', () => {
 
     // it starts without data
     // shows loading
-    expect(screen.getByText(/loading.../i)).toBeInTheDocument()
+    expect(await screen.findByText(/Price/i)).toBeInTheDocument()
 
     // we wait until we have data to get the elements
     // get => tem certeza do elemento
@@ -55,23 +58,25 @@ describe('<Games />', () => {
     // find => processos assincronos
     expect(await screen.findByTestId('Mock ExploreSidebar')).toBeInTheDocument()
     expect(await screen.findByText(/Sample Game/i)).toBeInTheDocument()
+    userEvent.click(await screen.findByRole('button', { name: /show more/i }))
 
-    expect(
-      await screen.findByRole('button', { name: /show more/i })
-    ).toBeInTheDocument()
+    expect(await screen.findByText(/Fetch More Game/i)).toBeInTheDocument()
   })
 
-  it('should render more games when show more is clicked', async () => {
+  it('should change push router when selecting a filter', async () => {
     renderWithTheme(
       <MockedProvider mocks={[gamesMock, fetchMoreMock]} cache={apolloCache}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
     )
 
-    expect(await screen.findByText(/Sample Game/i)).toBeInTheDocument()
+    userEvent.click(await screen.findByRole('checkbox', { name: /windows/i }))
+    userEvent.click(await screen.findByRole('checkbox', { name: /linux/i }))
+    userEvent.click(await screen.findByLabelText(/low to high/i))
 
-    userEvent.click(await screen.findByRole('button', { name: /show more/i }))
-
-    expect(await screen.findByText(/Fetch More Game/i)).toBeInTheDocument()
+    expect(push).toHaveBeenCalledWith({
+      pathname: '/games',
+      query: { platforms: ['windows', 'linux'], sort_by: 'low-to-high' }
+    })
   })
 })

@@ -1584,10 +1584,12 @@ export type HighlightFragmentFragment = { __typename?: 'ComponentPageHighlight',
 export type QueryGamesQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
   start?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<GameFiltersInput>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
 }>;
 
 
-export type QueryGamesQuery = { __typename?: 'Query', games?: { __typename?: 'GameEntityResponseCollection', data: Array<{ __typename?: 'GameEntity', attributes?: { __typename?: 'Game', name: string, slug: string, price: number, cover: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, developers?: { __typename?: 'DeveloperRelationResponseCollection', data: Array<{ __typename?: 'DeveloperEntity', attributes?: { __typename?: 'Developer', name: string } | null }> } | null } | null }> } | null };
+export type QueryGamesQuery = { __typename?: 'Query', games?: { __typename?: 'GameEntityResponseCollection', data: Array<{ __typename?: 'GameEntity', attributes?: { __typename?: 'Game', name: string, slug: string, price: number, cover: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, developers?: { __typename?: 'DeveloperRelationResponseCollection', data: Array<{ __typename?: 'DeveloperEntity', attributes?: { __typename?: 'Developer', name: string } | null }> } | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name: string } | null }> } | null, platforms?: { __typename?: 'PlatformRelationResponseCollection', data: Array<{ __typename?: 'PlatformEntity', attributes?: { __typename?: 'Platform', name: string } | null }> } | null } | null }> } | null };
 
 export type QueryGameBySlugQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -1696,8 +1698,8 @@ export const HighlightFragmentFragmentDoc = gql`
 }
     `;
 export const QueryGamesDocument = gql`
-    query QueryGames($limit: Int, $start: Int) {
-  games(pagination: {limit: $limit, start: $start}) {
+    query QueryGames($limit: Int, $start: Int, $where: GameFiltersInput, $sort: [String]) {
+  games(pagination: {limit: $limit, start: $start}, filters: $where, sort: $sort) {
     data {
       attributes {
         name
@@ -1710,6 +1712,20 @@ export const QueryGamesDocument = gql`
           }
         }
         developers {
+          data {
+            attributes {
+              name
+            }
+          }
+        }
+        categories {
+          data {
+            attributes {
+              name
+            }
+          }
+        }
+        platforms {
           data {
             attributes {
               name
@@ -1737,6 +1753,8 @@ export const QueryGamesDocument = gql`
  *   variables: {
  *      limit: // value for 'limit'
  *      start: // value for 'start'
+ *      where: // value for 'where'
+ *      sort: // value for 'sort'
  *   },
  * });
  */
