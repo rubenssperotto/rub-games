@@ -42,6 +42,7 @@ query QueryGames($limit: Int, $start: Int, $where: GameFiltersInput, $sort: [Str
           }
           price
         }
+        id
       }
     }
   }

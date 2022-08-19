@@ -1589,7 +1589,7 @@ export type QueryGamesQueryVariables = Exact<{
 }>;
 
 
-export type QueryGamesQuery = { __typename?: 'Query', games?: { __typename?: 'GameEntityResponseCollection', data: Array<{ __typename?: 'GameEntity', attributes?: { __typename?: 'Game', name: string, slug: string, price: number, cover: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, developers?: { __typename?: 'DeveloperRelationResponseCollection', data: Array<{ __typename?: 'DeveloperEntity', attributes?: { __typename?: 'Developer', name: string } | null }> } | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name: string } | null }> } | null, platforms?: { __typename?: 'PlatformRelationResponseCollection', data: Array<{ __typename?: 'PlatformEntity', attributes?: { __typename?: 'Platform', name: string } | null }> } | null } | null }> } | null };
+export type QueryGamesQuery = { __typename?: 'Query', games?: { __typename?: 'GameEntityResponseCollection', data: Array<{ __typename?: 'GameEntity', id?: string | null, attributes?: { __typename?: 'Game', name: string, slug: string, price: number, cover: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, developers?: { __typename?: 'DeveloperRelationResponseCollection', data: Array<{ __typename?: 'DeveloperEntity', attributes?: { __typename?: 'Developer', name: string } | null }> } | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name: string } | null }> } | null, platforms?: { __typename?: 'PlatformRelationResponseCollection', data: Array<{ __typename?: 'PlatformEntity', attributes?: { __typename?: 'Platform', name: string } | null }> } | null } | null }> } | null };
 
 export type QueryGameBySlugQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -1734,6 +1734,7 @@ export const QueryGamesDocument = gql`
         }
         price
       }
+      id
     }
   }
 }
